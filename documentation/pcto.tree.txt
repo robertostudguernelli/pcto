@@ -1,65 +1,17 @@
 pcto
 ├── app
-│   ├── auth
-│   │   ├── email.py
-│   │   ├── forms.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── email.cpython-39.pyc
-│   │   │   ├── forms.cpython-39.pyc
-│   │   │   ├── __init__.cpython-39.pyc
-│   │   │   └── routes.cpython-39.pyc
-│   │   └── routes.py
-│   ├── cli.py
-│   ├── email.py
-│   ├── errors
-│   │   ├── handlers.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   │       ├── handlers.cpython-39.pyc
-│   │       └── __init__.cpython-39.pyc
-│   ├── favicon.ico
+│   ├── forms.py
 │   ├── __init__.py
-│   ├── main
-│   │   ├── forms.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── forms.cpython-39.pyc
-│   │   │   ├── __init__.cpython-39.pyc
-│   │   │   └── routes.cpython-39.pyc
-│   │   └── routes.py
 │   ├── models.py
-│   ├── __pycache__
-│   │   ├── cli.cpython-39.pyc
-│   │   ├── email.cpython-39.pyc
-│   │   ├── __init__.cpython-39.pyc
-│   │   ├── models.cpython-39.pyc
-│   │   └── translate.cpython-39.pyc
-│   ├── static
-│   │   └── loading.gif
-│   ├── templates
-│   │   ├── auth
-│   │   │   ├── login.html
-│   │   │   ├── register.html
-│   │   │   ├── reset_password.html
-│   │   │   └── reset_password_request.html
-│   │   ├── base.html
-│   │   ├── edit_profile.html
-│   │   ├── email
-│   │   │   ├── reset_password.html
-│   │   │   └── reset_password.txt
-│   │   ├── errors
-│   │   │   ├── 404.html
-│   │   │   └── 500.html
-│   │   ├── index.html
-│   │   ├── _post.html
-│   │   └── user.html
-│   ├── translate.py
-│   └── translations
-│       └── es
-│           └── LC_MESSAGES
-│               └── messages.po
-├── babel.cfg
+│   ├── routes.py
+│   └── templates
+│       ├── base.html
+│       ├── edit_profile.html
+│       ├── index.html
+│       ├── login.html
+│       ├── _post.html
+│       ├── register.html
+│       └── user.html
 ├── config.py
 ├── documentation
 │   ├── dbDump.sh
@@ -70,26 +22,14 @@ pcto
 │   ├── pctoDatabase.tar
 │   ├── pcto ER object model.dbm
 │   ├── pcto ER object model.pdf
+│   ├── pcto.tree.txt
 │   ├── pcto web pages diagram.dia
 │   ├── pipInstallRequirement.sh
 │   ├── progetto 2022.pdf
 │   ├── requirements.txt
 │   └── Roberto Guernelli 804513 - PCTO UNIVE.docx
 ├── LICENSE
-├── migrations
-│   ├── alembic.ini
-│   ├── env.py
-│   ├── README
-│   ├── script.py.mako
-│   └── versions
-│       ├── 2b017edaa91f_add_language_to_posts.py
-│       ├── 37f06a334dbf_new_fields_in_user_model.py
-│       ├── 780739b227a7_posts_table.py
-│       ├── ae346256b650_followers.py
-│       └── e517276bb1c2_users_table.py
 ├── pcto.py
-├── __pycache__
-│   ├── config.cpython-39.pyc
-│   └── pcto.cpython-39.pyc
-├── README.md
-└── tests.py
+└── README.md
+
+5 directories, 35 files
