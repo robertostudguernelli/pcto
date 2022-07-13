@@ -26,3 +26,7 @@ def show_username_information(username):
 @app.route('/userbyindex/<username>')
 def userbyindex(username):
     return render_template('index.html', user=username)
+
+@app.route('/form')
+def form():
+    return render_template('form.html')
