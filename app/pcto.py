@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import *
 app = Flask('__name__') # crea un oggetto di nome app di tipo Flask (è il costruttore)
 
 @app.route('/')
@@ -22,3 +22,7 @@ def divbyzero():
 @app.route('/user/<username>')
 def show_username_information(username):
     return 'Hello, ' + username
+
+@app.route('/userbyindex/<username>')
+def userbyindex(username):
+    return render_template('index.html', user=username)

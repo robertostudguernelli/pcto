@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block pagebody %}
+    {% if user %}
+        Hello, {{user}}!!!<br />
+    {% else %}
+        Hello, anonimous!!!<br />
+    {% endif %}
+{% endblock %}
