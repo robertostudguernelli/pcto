@@ -1,0 +1,97 @@
+2022-07-13 21:02:31,699 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:02:31,811 INFO :  * Running on http://192.168.0.202:5000/ (Press CTRL+C to quit)
+2022-07-13 21:02:31,815 INFO :  * Restarting with stat
+2022-07-13 21:02:32,562 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:02:47,134 INFO : 192.168.0.101 - - [13/Jul/2022 21:02:47] "[35m[1mPOST /login?next=%2F HTTP/1.1[0m" 500 -
+2022-07-13 21:02:47,184 INFO : 192.168.0.101 - - [13/Jul/2022 21:02:47] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:02:47,186 INFO : 192.168.0.101 - - [13/Jul/2022 21:02:47] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:02:47,221 INFO : 192.168.0.101 - - [13/Jul/2022 21:02:47] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:05:50,397 INFO :  * Detected change in '/home/pcto/pcto/config.py', reloading
+2022-07-13 21:05:50,537 INFO :  * Restarting with stat
+2022-07-13 21:05:51,326 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:05:57,725 INFO : 192.168.0.101 - - [13/Jul/2022 21:05:57] "[35m[1mPOST /login?next=%2F HTTP/1.1[0m" 500 -
+2022-07-13 21:05:57,782 INFO : 192.168.0.101 - - [13/Jul/2022 21:05:57] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:05:57,789 INFO : 192.168.0.101 - - [13/Jul/2022 21:05:57] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:05:57,832 INFO : 192.168.0.101 - - [13/Jul/2022 21:05:57] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:06:03,024 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:03] "[32mGET / HTTP/1.1[0m" 302 -
+2022-07-13 21:06:03,055 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:03] "GET /login?next=%2F HTTP/1.1" 200 -
+2022-07-13 21:06:03,171 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-07-13 21:06:10,889 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:10] "[35m[1mPOST /login?next=%2F HTTP/1.1[0m" 500 -
+2022-07-13 21:06:10,942 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:10] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:06:10,944 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:10] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:06:10,974 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:10] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:06:20,017 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:20] "GET /login?next=%2F HTTP/1.1" 200 -
+2022-07-13 21:06:20,110 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-07-13 21:06:21,839 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:21] "GET /register HTTP/1.1" 200 -
+2022-07-13 21:06:21,936 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-07-13 21:06:38,761 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:38] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2022-07-13 21:06:38,814 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:38] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:06:38,817 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:38] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:06:38,838 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:38] "GET /register?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2022-07-13 21:06:38,857 INFO : 192.168.0.101 - - [13/Jul/2022 21:06:38] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:07:08,161 INFO :  * Detected change in '/home/pcto/pcto/pcto.py', reloading
+2022-07-13 21:07:08,311 INFO :  * Restarting with stat
+2022-07-13 21:07:08,960 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:07:15,557 INFO : 192.168.0.101 - - [13/Jul/2022 21:07:15] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2022-07-13 21:07:15,613 INFO : 192.168.0.101 - - [13/Jul/2022 21:07:15] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:07:15,615 INFO : 192.168.0.101 - - [13/Jul/2022 21:07:15] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:07:15,645 INFO : 192.168.0.101 - - [13/Jul/2022 21:07:15] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:07:59,885 INFO :  * Detected change in '/home/pcto/pcto/config.py', reloading
+2022-07-13 21:08:00,023 INFO :  * Restarting with stat
+2022-07-13 21:08:00,741 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:08:13,444 INFO :  * Detected change in '/home/pcto/pcto/config.py', reloading
+2022-07-13 21:08:13,576 INFO :  * Restarting with stat
+2022-07-13 21:08:14,251 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:08:18,154 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:18] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2022-07-13 21:08:18,227 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:18] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:08:18,229 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:18] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:08:18,266 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:18] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:08:33,037 INFO :  * Detected change in '/home/pcto/pcto/config.py', reloading
+2022-07-13 21:08:33,181 INFO :  * Restarting with stat
+2022-07-13 21:08:33,949 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:08:38,485 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:38] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2022-07-13 21:08:38,555 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:38] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:08:38,556 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:38] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:08:38,589 INFO : 192.168.0.101 - - [13/Jul/2022 21:08:38] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:12:24,249 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:12:24,405 INFO :  * Restarting with stat
+2022-07-13 21:12:30,594 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:30] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2022-07-13 21:12:30,644 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:30] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:12:30,648 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:30] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:12:30,681 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:30] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:12:40,334 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:40] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2022-07-13 21:12:40,428 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:40] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:12:40,432 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:40] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:12:40,469 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:40] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:12:40,473 INFO : 192.168.0.101 - - [13/Jul/2022 21:12:40] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2022-07-13 21:13:07,661 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:13:07,795 INFO :  * Restarting with stat
+2022-07-13 21:13:13,622 INFO : 192.168.0.101 - - [13/Jul/2022 21:13:13] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2022-07-13 21:13:13,688 INFO : 192.168.0.101 - - [13/Jul/2022 21:13:13] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:13:13,694 INFO : 192.168.0.101 - - [13/Jul/2022 21:13:13] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:13:13,720 INFO : 192.168.0.101 - - [13/Jul/2022 21:13:13] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:14:04,419 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:14:04,544 INFO :  * Restarting with stat
+2022-07-13 21:14:05,417 DEBUG : <class 'flask_sqlalchemy.SQLAlchemy'>
+2022-07-13 21:14:08,419 INFO : 192.168.0.101 - - [13/Jul/2022 21:14:08] "[32mGET / HTTP/1.1[0m" 302 -
+2022-07-13 21:14:08,455 INFO : 192.168.0.101 - - [13/Jul/2022 21:14:08] "GET /login?next=%2F HTTP/1.1" 200 -
+2022-07-13 21:14:08,612 INFO : 192.168.0.101 - - [13/Jul/2022 21:14:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-07-13 21:14:17,268 INFO : 192.168.0.101 - - [13/Jul/2022 21:14:17] "[32mGET / HTTP/1.1[0m" 302 -
+2022-07-13 21:14:17,284 INFO : 192.168.0.101 - - [13/Jul/2022 21:14:17] "GET /login?next=%2F HTTP/1.1" 200 -
+2022-07-13 21:15:33,509 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:15:33,626 INFO :  * Restarting with stat
+2022-07-13 21:15:39,951 INFO : 192.168.0.101 - - [13/Jul/2022 21:15:39] "[35m[1mGET /login?next=%2F HTTP/1.1[0m" 500 -
+2022-07-13 21:15:40,010 INFO : 192.168.0.101 - - [13/Jul/2022 21:15:40] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:15:40,011 INFO : 192.168.0.101 - - [13/Jul/2022 21:15:40] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:15:40,046 INFO : 192.168.0.101 - - [13/Jul/2022 21:15:40] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:15:40,056 INFO : 192.168.0.101 - - [13/Jul/2022 21:15:40] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2022-07-13 21:16:12,552 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:16:12,672 INFO :  * Restarting with stat
+2022-07-13 21:16:51,594 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:16:51,720 INFO :  * Restarting with stat
+2022-07-13 21:16:56,017 INFO : 192.168.0.101 - - [13/Jul/2022 21:16:56] "[35m[1mGET /login?next=%2F HTTP/1.1[0m" 500 -
+2022-07-13 21:16:56,056 INFO : 192.168.0.101 - - [13/Jul/2022 21:16:56] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2022-07-13 21:16:56,056 INFO : 192.168.0.101 - - [13/Jul/2022 21:16:56] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2022-07-13 21:16:56,090 INFO : 192.168.0.101 - - [13/Jul/2022 21:16:56] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2022-07-13 21:17:57,572 INFO :  * Detected change in '/home/pcto/pcto/app/__init__.py', reloading
+2022-07-13 21:17:57,771 INFO :  * Restarting with stat
