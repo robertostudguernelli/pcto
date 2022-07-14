@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
 {% block pagebody %}
-    {% if user %}
-        Hello, {{user}}!!!<br />
-    {% else %}
-        Hello, anonimous!!!<br />
-    {% endif %}
+    Hello, World! <br />
+    Click <a href="/users/anonymous" >here</a> to continue.
 {% endblock %}
