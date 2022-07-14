@@ -42,3 +42,16 @@ def divbyzero():
 @app.route('/userbyindex/<username>')
 def userbyindex(username):
     return render_template('index.html', user=username)
+
+# XSS vulnerability
+@app.route('/unsafe')
+def unsafe():
+    u = request.args.get('user')
+    return "Welcome " + u
+
+@app.route('/safe')
+def safe():
+    u = request.args.get('user')
+    return render_template('safe.html', user = u)
+
+    
