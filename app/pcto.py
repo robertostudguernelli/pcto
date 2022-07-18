@@ -8,12 +8,20 @@ from sqlalchemy import *
 
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
 
+import logging
+
 app = Flask( __name__ )
-#engine= create_engine('sqlite:///database.db', echo=True)
-engine = create_engine('postgresql://postgres:password@192.168.0.202:5432/pcto', echo = True)
+
+app.config['SECRET_KEY'] = 'secretKey'
+app.config['DBMS'] = 'postgresql+psycopg2://postgres:password@192.168.0.202:5432/pcto'
+
+logging.basicConfig(level=logging.INFO, filename='pcto.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logging.info('- - - start LOGGING')
+logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
+
+engine = create_engine(app.config['DBMS'], echo = False)
 metadata = MetaData()
 Person = Table('person', metadata, autoload=True, autoload_with=engine)
-app. config ['SECRET_KEY'] = 'secretKey'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -31,31 +39,34 @@ def load_user(id):
     rs = conn.execute('SELECT * FROM Person WHERE id = ?', id )
     person = rs.fetchone()
     conn.close()
-    return Person(person.id , person.email , person.pwd)
+    return Person(person.id , person.email , person.password)
 
 @app.route('/')
 def home():
     if current_user.is_authenticated:
         return redirect(url_for('private'))
-    return render_template("base.html")
+    else:
+        return render_template('base.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        proj = [Person.c.email, Person.c.password]
         conn = engine.connect()
-#        rs = conn.execute('SELECT * FROM Person WhERE email = ?', [request.form['username']])
-        rs = conn.execute("SELECT * FROM Person WhERE email = 'rguernelli@libero.it'")
-        real_pwd = rs.fetchone()
+        cond = and_(Person.c.email==request.form['email'], Person.c.password==request.form['password'])
+        cond.compile().params
+        query = select(proj).where(cond)
+        result = conn.execute(query)
+        for row in result:
+            logging.info(row)
         conn.close()
-
-        if (real_pwd is not None):
-            if (request.form['password'] == real_pwd['password']):
-                person = get_user_by_email(request.form['password'])
-                login_user(person)
-                return redirect(url_for('private'))
-            else:
-                return redirect(url_for('home'))
+        if (result.rowcount==1):
+            logging.info('loggato')
+            person = get_user_by_email(request.form['password'])
+            login_user(person)
+            return redirect(url_for('private'))
         else:
+            logging.info('NON loggato')
             return redirect(url_for('home'))
 
 @app.route('/private')

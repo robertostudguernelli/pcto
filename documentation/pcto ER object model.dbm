@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" last-position="0,90" last-zoom="1" max-obj-count="90"
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="90"
 	 default-owner="postgres"
 	 layers="Default layer" active-layers="0">
 <role name="pcto"
@@ -139,11 +139,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</customidxs>
 </table>
 
-<table name="person" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+<table name="person" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
 	<position x="1400" y="48"/>
-	<column name="email" not-null="true">
+	<column name="email" alias="id" not-null="true">
 		<type name="character" length="40"/>
 	</column>
 	<column name="password" not-null="true">
@@ -154,6 +154,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="surname">
 		<type name="character" length="40"/>
+	</column>
+	<column name="active" not-null="true">
+		<type name="boolean" length="0"/>
 	</column>
 	<column name="is_teacher" not-null="true">
 		<type name="boolean" length="0"/>
