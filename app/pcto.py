@@ -22,6 +22,12 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
 engine = create_engine(app.config['DBMS'], echo = False)
 metadata = MetaData()
 Person = Table('person', metadata, autoload=True, autoload_with=engine)
+def get_id(self):
+    return self.email
+Person.get_id = get_id
+Person.is_authenticated = True
+Person.is_active = True
+Person.is_anonymous = True
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -51,18 +57,17 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        proj = [Person.c.email, Person.c.password]
         conn = engine.connect()
+        proj = [Person.c.email, Person.c.password]
         cond = and_(Person.c.email==request.form['email'], Person.c.password==request.form['password'])
         cond.compile().params
         query = select(proj).where(cond)
         result = conn.execute(query)
-        for row in result:
-            logging.info(row)
         conn.close()
         if (result.rowcount==1):
             logging.info('loggato')
-            person = get_user_by_email(request.form['password'])
+            person = result.fetchone()
+            logging.info(person)
             login_user(person)
             return redirect(url_for('private'))
         else:
