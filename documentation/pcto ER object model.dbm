@@ -155,7 +155,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="surname">
 		<type name="character" length="40"/>
 	</column>
-	<column name="active" not-null="true">
+	<column name="is_active" not-null="true">
 		<type name="boolean" length="0"/>
 	</column>
 	<column name="is_teacher" not-null="true">
