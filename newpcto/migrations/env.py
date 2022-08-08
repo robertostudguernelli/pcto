@@ -65,9 +65,13 @@ def run_migrations_online():
                 directives[:] = []
                 logger.info('No changes in schema detected.')
 
-    engine = engine_from_config(config.get_section(config.config_ini_section),
-                                prefix='sqlalchemy.',
-                                poolclass=pool.NullPool)
+    # define my POSTGRESQL engine
+    # engine = engine_from_config(config.get_section(config.config_ini_section),
+    #                            prefix='sqlalchemy.',
+    #                            poolclass=pool.NullPool)
+    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo = False)
+    metadata = MetaData()
+    Person = Table('person', metadata, autoload=True, autoload_with=engine)
 
     connection = engine.connect()
     context.configure(connection=connection,

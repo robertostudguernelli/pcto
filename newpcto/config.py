@@ -6,15 +6,18 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 
 class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
+    SECRET_KEY = 'you-will-never-guess'
+    
+    # my DATABASE
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:password@192.168.0.202:5432/pcto'
+    
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.libero.it'
-    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'pcto.rguernelli@libero.it'
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or '!Pass1word$'
+    MAIL_SERVER = 'smtp.libero.it'
+    MAIL_PORT = int(25)
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = 'pcto.rguernelli@libero.it'
+    MAIL_PASSWORD = '!Pass1word$'
     ADMINS = ['pcto.rguernelli@libero.it']
     LANGUAGES = ['en', 'es']
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
