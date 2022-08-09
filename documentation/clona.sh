@@ -12,6 +12,6 @@ pip install --upgrade pip
 cd ~/pcto/newpcto
 rpl 202 203 '~/pcto/*/.flaskenv'
 python -m venv venv
-source venv/bin/activate
+source ~/pcto/newpcto/venv/bin/activate
 pip install -r requirements.txt
 cp ~/pcto/documentation/clona.sh .
