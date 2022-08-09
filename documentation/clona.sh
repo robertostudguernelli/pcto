@@ -9,7 +9,8 @@ cd ~
 rm -fR pcto
 git clone https://github.com/robertostudguernelli/pcto
 pip install --upgrade pip
-cd pcto/app
+cp documentation/clona.sh .
+cd pcto/newpcto
 rpl 202 203 '*/.flaskenv'
 python -m venv venv
 source venv/bin/activate
