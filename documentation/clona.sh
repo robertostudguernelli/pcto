@@ -9,7 +9,7 @@ cd ~
 rm -fR pcto
 git clone https://github.com/robertostudguernelli/pcto
 pip install --upgrade pip
-cp documentation/clona.sh .
+cp pcto/documentation/clona.sh .
 cd pcto/newpcto
 rpl 202 203 '*/.flaskenv'
 python -m venv venv
