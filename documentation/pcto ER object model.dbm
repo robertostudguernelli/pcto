@@ -2919,6 +2919,39 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-required="false" dst-required="false"
 	 table-name="many_course_has_many_person"/>
 
+<table name="user" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="pcto"/>
+	<position x="1275" y="381"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="username">
+		<type name="character" length="64"/>
+	</column>
+	<column name="password_hash">
+		<type name="character" length="128"/>
+	</column>
+	<column name="email">
+		<type name="character" length="120"/>
+	</column>
+	<column name="about_me">
+		<type name="character" length="140"/>
+	</column>
+	<column name="last_seen">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="user_pkey" type="pk-constr" table="public.&quot;user&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="user_username_unique" type="uq-constr" table="public.&quot;user&quot;">
+		<columns names="username" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="user_email_unique" type="uq-constr" table="public.&quot;user&quot;">
+		<columns names="email" ref-type="src-columns"/>
+	</constraint>
+</table>
+
 <permission>
 	<object name="public" type="schema"/>
 	<roles names="pcto"/>

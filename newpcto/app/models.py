@@ -33,15 +33,15 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password, 'sha256')
+        self.password_hash = generate_password_hash(password)
         logging.info(self.password_hash)
 
     def check_password(self, password):
-        logging.info(self.password_hash)
-        logging.info(generate_password_hash(password, 'sha256'))
+        logging.info(str.strip(self.password_hash))
+        logging.info(generate_password_hash(password))
         logging.info(password)
-        logging.info(check_password_hash(self.password_hash, password))
-        return check_password_hash(self.password_hash, password)
+        logging.info(check_password_hash(str.strip(self.password_hash), password))
+        return check_password_hash(str.strip(self.password_hash), password)
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
