@@ -19,6 +19,6 @@ class Config(object):
     MAIL_USERNAME = 'pcto.rguernelli@libero.it'
     MAIL_PASSWORD = '!Pass1word$'
     ADMINS = ['pcto.rguernelli@libero.it']
-    LANGUAGES = ['en', 'es']
+    LANGUAGES = ['en', 'es', 'it']
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
     POSTS_PER_PAGE = 25

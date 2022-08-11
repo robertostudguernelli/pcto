@@ -1,8 +1,9 @@
 import os
 import click
-
+import logging
 
 def register(app):
+    logging.info("sono in cli.register")
     @app.cli.group()
     def translate():
         """Translation and localization commands."""

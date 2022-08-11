@@ -48,7 +48,6 @@ def run_migrations_offline():
 
 
 def run_migrations_online():
-    logging.info("sono in register.cli")
     """Run migrations in 'online' mode.
 
     In this scenario we need to create an Engine
@@ -66,14 +65,9 @@ def run_migrations_online():
                 directives[:] = []
                 logger.info('No changes in schema detected.')
 
-    # define my POSTGRESQL engine
-    # engine = engine_from_config(config.get_section(config.config_ini_section),
-    #                            prefix='sqlalchemy.',
-    #                            poolclass=pool.NullPool)
-    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo = False)
-    metadata = MetaData()
-    Person = Table('person', metadata, autoload=True, autoload_with=engine)
-    #User = Table('user', metadata, autoload=True, autoload_with=engine)
+    engine = engine_from_config(config.get_section(config.config_ini_section),
+                                prefix='sqlalchemy.',
+                                poolclass=pool.NullPool)
 
     connection = engine.connect()
     context.configure(connection=connection,
