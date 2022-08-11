@@ -2922,7 +2922,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="user" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="1275" y="381"/>
+	<position x="258" y="680"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>

@@ -72,6 +72,7 @@ def run_migrations_online():
     engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo = False)
     metadata = MetaData()
     Person = Table('person', metadata, autoload=True, autoload_with=engine)
+    User = Table('user', metadata, autoload=True, autoload_with=engine)
 
     connection = engine.connect()
     context.configure(connection=connection,
