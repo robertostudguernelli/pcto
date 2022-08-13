@@ -52,7 +52,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="course" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+<table name="course" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
 	<position x="20" y="40"/>
@@ -75,17 +75,25 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 	<constraint name="check_max_partecipants" type="ck-constr" table="public.course">
-			<expression><![CDATA[max_partecipants>=1]]></expression>
+			<expression><![CDATA[max_partecipants>=0]]></expression>
 	</constraint>
 	<constraint name="check_ratio" type="ck-constr" table="public.course">
 			<expression><![CDATA[min_ratio_for_attendance_certificate >0]]></expression>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="email_person" index="5"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="person_fk" index="3"/>
+	</customidxs>
 </table>
 
 <table name="lesson" layer="0" collapse-mode="2" max-obj-count="15" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="653" y="241"/>
+	<position x="651" y="325"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -2859,25 +2867,33 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		</idxelement>
 </index>
 
-<relationship name="course_has_many_lesson" type="rel1n" layer="0"
+<relationship name="course_has_many_lessons" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#ae52bd"
 	 src-table="public.course"
 	 dst-table="public.lesson"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
-<relationship name="classroom_has_many_lesson" type="rel1n" layer="0"
+<relationship name="classroom_has_many_lessons" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#b2a914"
 	 src-table="public.classroom"
 	 dst-table="public.lesson"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
-<relationship name="many_lesson_has_many_student" type="relnn" layer="0"
+<relationship name="many_lessons_has_many_students" type="relnn" layer="0"
 	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
 	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
 	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
@@ -2886,13 +2902,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-table="public.lesson"
 	 dst-table="public.person"
 	 src-required="false" dst-required="false"
-	 table-name="many_lesson_has_many_person">
+	 table-name="many_lessons_has_many_persons">
 	<label ref-type="name-label">
 		<position x="-73.3721" y="-74.6823"/>
 	</label>
 </relationship>
 
-<relationship name="teacher_has_many_lesson" type="rel1n" layer="0"
+<relationship name="teacher_has_many_lessons" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
@@ -2900,15 +2916,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-table="public.person"
 	 dst-table="public.lesson"
 	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="-63.1825" y="-15.575"/>
+	</label>
 	<label ref-type="dst-label">
 		<position x="0" y="0"/>
 	</label>
 	<label ref-type="name-label">
-		<position x="108.862" y="-79.9073"/>
+		<position x="14.3615" y="177.593"/>
 	</label>
 </relationship>
 
-<relationship name="many_course_has_many_person" type="relnn" layer="0"
+<relationship name="many_courses_has_many_persons" type="relnn" layer="0"
 	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
 	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
 	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
@@ -2917,12 +2936,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-table="public.course"
 	 dst-table="public.person"
 	 src-required="false" dst-required="false"
-	 table-name="many_course_has_many_person"/>
+	 table-name="many_courses_has_many_persons">
+	<label ref-type="name-label">
+		<position x="135.289" y="-4.78226"/>
+	</label>
+</relationship>
 
 <table name="user" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="258" y="680"/>
+	<position x="1258" y="540"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -2951,6 +2974,25 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<columns names="email" ref-type="src-columns"/>
 	</constraint>
 </table>
+
+<relationship name="manager_has_many_courses" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#b9329a"
+	 src-table="public.person"
+	 dst-table="public.course"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="-30.1825" y="30.425"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="26.4066" y="7.425"/>
+	</label>
+	<label ref-type="name-label">
+		<position x="137.183" y="-60.1073"/>
+	</label>
+</relationship>
 
 <permission>
 	<object name="public" type="schema"/>
