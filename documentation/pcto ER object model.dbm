@@ -22,15 +22,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <schema name="public" layer="0" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
-<table name="classroom" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+<table name="classroom" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="18" y="335"/>
+	<position x="29" y="609"/>
 	<column name="id" not-null="true">
-		<type name="integer" length="0"/>
+		<type name="serial" length="0"/>
 	</column>
 	<column name="name" not-null="true">
 		<type name="character" length="40"/>
+	</column>
+	<column name="description">
+		<type name="character" length="1024"/>
 	</column>
 	<column name="capacity">
 		<type name="integer" length="0"/>
@@ -41,14 +44,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="classroom_pkey" type="pk-constr" table="public.classroom">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
-	<constraint name="classroom_unique" type="uq-constr" table="public.classroom">
+	<constraint name="classroom_name_unique" type="uq-constr" table="public.classroom">
 		<columns names="name" ref-type="src-columns"/>
 	</constraint>
-	<constraint name="classroom_capacity" type="ck-constr" table="public.classroom">
-			<expression><![CDATA[capacity>=1]]></expression>
-	</constraint>
-	<constraint name="check_capacity" type="ck-constr" table="public.classroom">
-			<expression><![CDATA[capacity>=1]]></expression>
+	<constraint name="classroom_capacity_check" type="ck-constr" table="public.classroom">
+			<expression><![CDATA[capacity>=0]]></expression>
 	</constraint>
 </table>
 
@@ -57,45 +57,45 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="pcto"/>
 	<position x="20" y="40"/>
 	<column name="id" not-null="true">
-		<type name="integer" length="0"/>
+		<type name="serial" length="0"/>
 	</column>
 	<column name="title" not-null="true">
-		<type name="character" length="40"/>
+		<type name="character" length="128"/>
 	</column>
-	<column name="description" not-null="true">
+	<column name="description">
 		<type name="character" length="1024"/>
 	</column>
-	<column name="min_ratio_for_attendance_certificate" default-value="1.0">
+	<column name="min_ratio_for_attendance_certificate" default-value="0.75">
 		<type name="double precision" length="0"/>
 	</column>
-	<column name="max_partecipants">
+	<column name="max_in_presence_partecipants" not-null="true" default-value="0">
 		<type name="integer" length="0"/>
 	</column>
 	<constraint name="course_pkey" type="pk-constr" table="public.course">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
-	<constraint name="check_max_partecipants" type="ck-constr" table="public.course">
-			<expression><![CDATA[max_partecipants>=0]]></expression>
+	<constraint name="course_max_in_presence_partecipants_check" type="ck-constr" table="public.course">
+			<expression><![CDATA[max_in_presence_partecipants>=0]]></expression>
 	</constraint>
-	<constraint name="check_ratio" type="ck-constr" table="public.course">
+	<constraint name="course_ratio_check" type="ck-constr" table="public.course">
 			<expression><![CDATA[min_ratio_for_attendance_certificate >0]]></expression>
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="email_person" index="5"/>
+		<object name="id_user" index="5"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="person_fk" index="3"/>
+		<object name="user_fk" index="3"/>
 	</customidxs>
 </table>
 
-<table name="lesson" layer="0" collapse-mode="2" max-obj-count="15" z-value="0">
+<table name="lesson" layer="0" collapse-mode="2" max-obj-count="16" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="651" y="325"/>
+	<position x="597" y="399"/>
 	<column name="id" not-null="true">
-		<type name="integer" length="0"/>
+		<type name="serial" length="0"/>
 	</column>
 	<column name="secret_token" not-null="true">
 		<type name="character" length="8"/>
@@ -103,19 +103,22 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="title" not-null="true">
 		<type name="character" length="40"/>
 	</column>
+	<column name="description">
+		<type name="character" length="1024"/>
+	</column>
 	<column name="start_date_time">
 		<type name="date" length="0"/>
 	</column>
 	<column name="end_date_time">
 		<type name="date" length="0"/>
 	</column>
-	<column name="in_presence">
+	<column name="in_presence" not-null="true" default-value="True">
 		<type name="boolean" length="0"/>
 	</column>
-	<column name="online">
+	<column name="online" not-null="true" default-value="True">
 		<type name="boolean" length="0"/>
 	</column>
-	<column name="recording_will_be_available">
+	<column name="recording_will_be_available" not-null="true" default-value="False">
 		<type name="boolean" length="0"/>
 	</column>
 	<column name="on_line_link">
@@ -127,35 +130,38 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="lesson_pkey" type="pk-constr" table="public.lesson">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
-	<constraint name="date_time_start_end" type="ck-constr" table="public.lesson">
+	<constraint name="lesson_date_time_start_end_check" type="ck-constr" table="public.lesson">
 			<expression><![CDATA[start_date_time < end_date_time]]></expression>
 	</constraint>
-	<constraint name="how" type="ck-constr" table="public.lesson">
+	<constraint name="lesson_how_check" type="ck-constr" table="public.lesson">
 			<expression><![CDATA[in_presence OR online]]></expression>
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="email_person" index="12"/>
-		<object name="id_classroom" index="11"/>
-		<object name="id_course" index="10"/>
+		<object name="id_classroom" index="12"/>
+		<object name="id_course" index="11"/>
+		<object name="id_user" index="13"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
 		<object name="classroom_fk" index="4"/>
 		<object name="course_fk" index="3"/>
-		<object name="person_fk" index="5"/>
+		<object name="user_fk" index="5"/>
 	</customidxs>
 </table>
 
-<table name="person" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
+<table name="user" layer="0" collapse-mode="2" max-obj-count="8" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="1400" y="48"/>
-	<column name="email" alias="id" not-null="true">
-		<type name="character" length="40"/>
+	<position x="1342" y="43"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
 	</column>
-	<column name="password" not-null="true">
-		<type name="character" length="40"/>
+	<column name="email" not-null="true">
+		<type name="character" length="120"/>
+	</column>
+	<column name="password_hash" not-null="true">
+		<type name="character" length="128"/>
 	</column>
 	<column name="name">
 		<type name="character" length="40"/>
@@ -163,13 +169,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="surname">
 		<type name="character" length="40"/>
 	</column>
-	<column name="is_active" not-null="true">
+	<column name="is_active" not-null="true" default-value="True">
 		<type name="boolean" length="0"/>
 	</column>
-	<column name="is_teacher" not-null="true">
+	<column name="is_teacher" not-null="true" default-value="False">
 		<type name="boolean" length="0"/>
 	</column>
-	<constraint name="person_pkey" type="pk-constr" table="public.person">
+	<constraint name="user_pkey" type="pk-constr" table="public.&quot;user&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="user_email_unique" type="uq-constr" table="public.&quot;user&quot;">
 		<columns names="email" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -2859,7 +2868,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</element>
 </opclass>
 
-<index name="person_index" table="public.person"
+<index name="user_email_index" table="public.&quot;user&quot;"
 	 concurrent="false" unique="false" fast-update="false" buffering="false"
 	 index-type="btree" factor="0">
 		<idxelement use-sorting="false">
@@ -2876,7 +2885,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.lesson"
 	 src-required="false" dst-required="false">
 	<label ref-type="name-label">
-		<position x="0" y="0"/>
+		<position x="4.03466" y="-63.1073"/>
 	</label>
 </relationship>
 
@@ -2900,11 +2909,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-col-pattern="id"
 	 custom-color="#1e8e84"
 	 src-table="public.lesson"
-	 dst-table="public.person"
+	 dst-table="public.&quot;user&quot;"
 	 src-required="false" dst-required="false"
-	 table-name="many_lessons_has_many_persons">
+	 table-name="many_lessons_has_many_students">
 	<label ref-type="name-label">
-		<position x="-73.3721" y="-74.6823"/>
+		<position x="-122.504" y="-24.9323"/>
 	</label>
 </relationship>
 
@@ -2913,7 +2922,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#bb306d"
-	 src-table="public.person"
+	 src-table="public.&quot;user&quot;"
 	 dst-table="public.lesson"
 	 src-required="false" dst-required="false">
 	<label ref-type="src-label">
@@ -2923,29 +2932,29 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<position x="0" y="0"/>
 	</label>
 	<label ref-type="name-label">
-		<position x="14.3615" y="177.593"/>
+		<position x="-39.981" y="202.793"/>
 	</label>
 </relationship>
 
-<relationship name="many_courses_has_many_persons" type="relnn" layer="0"
+<relationship name="many_courses_has_many_students" type="relnn" layer="0"
 	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
 	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
 	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
 	 pk-col-pattern="id"
 	 custom-color="#f19111"
 	 src-table="public.course"
-	 dst-table="public.person"
+	 dst-table="public.&quot;user&quot;"
 	 src-required="false" dst-required="false"
-	 table-name="many_courses_has_many_persons">
+	 table-name="many_courses_has_many_students">
 	<label ref-type="name-label">
 		<position x="135.289" y="-4.78226"/>
 	</label>
 </relationship>
 
-<table name="user" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
+<table name="user_example" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="pcto"/>
-	<position x="1258" y="540"/>
+	<position x="1266" y="608"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -2964,13 +2973,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="last_seen">
 		<type name="date" length="0"/>
 	</column>
-	<constraint name="user_pkey" type="pk-constr" table="public.&quot;user&quot;">
+	<constraint name="user_example_pkey" type="pk-constr" table="public.user_example">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
-	<constraint name="user_username_unique" type="uq-constr" table="public.&quot;user&quot;">
+	<constraint name="user_example_username_unique" type="uq-constr" table="public.user_example">
 		<columns names="username" ref-type="src-columns"/>
 	</constraint>
-	<constraint name="user_email_unique" type="uq-constr" table="public.&quot;user&quot;">
+	<constraint name="user_example_email_unique" type="uq-constr" table="public.user_example">
 		<columns names="email" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -2980,7 +2989,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#b9329a"
-	 src-table="public.person"
+	 src-table="public.&quot;user&quot;"
 	 dst-table="public.course"
 	 src-required="false" dst-required="false">
 	<label ref-type="src-label">
@@ -2990,9 +2999,27 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<position x="26.4066" y="7.425"/>
 	</label>
 	<label ref-type="name-label">
-		<position x="137.183" y="-60.1073"/>
+		<position x="202.683" y="-78.8073"/>
 	</label>
 </relationship>
+
+<table name="echo" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="pcto"/>
+	<position x="1411" y="412"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="time">
+		<type name="time" length="0"/>
+	</column>
+	<column name="number">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="echo_pkey" type="pk-constr" table="public.echo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
 
 <permission>
 	<object name="public" type="schema"/>
