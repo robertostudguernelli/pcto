@@ -10,7 +10,7 @@ class Config(object):
     
     # my DATABASE
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:password@192.168.0.202:5432/pcto'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:password@192.168.1.202:5432/pcto'
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.libero.it'

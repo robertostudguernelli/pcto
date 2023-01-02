@@ -32,7 +32,7 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
     def set_password(self, password):
-        # ATTENCTION ATTENCTION ATTECTION
+        # ATTENTION ATTENTION ATTETION
         # passward is always set to 'password'
         password = 'password'
         self.password_hash = generate_password_hash(password)
