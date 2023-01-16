@@ -1,4 +1,4 @@
-#!/home/pcto/progetto/pcto/venv/bin/python3
+#!/home/pcto/Scrivania/pcto/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
