@@ -10,7 +10,7 @@ title='PCTO Roberto Guernelli, 804513?'
 @app.route('/index')
 
 def index():
-    user = {'username': app.config['SECRET_KEY']}
+    user = {'username': 'prova prova prova prova prova'}
     return render_template('index.html', title=app.config['WEB_PAGE_TITLE'], user=user)
 
 @app.route('/login', methods=['GET', 'POST'])

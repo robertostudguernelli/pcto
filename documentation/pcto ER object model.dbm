@@ -2951,39 +2951,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</label>
 </relationship>
 
-<table name="user_example" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
-	<schema name="public"/>
-	<role name="pcto"/>
-	<position x="1261" y="608"/>
-	<column name="id" not-null="true">
-		<type name="integer" length="0"/>
-	</column>
-	<column name="username">
-		<type name="character" length="64"/>
-	</column>
-	<column name="password_hash">
-		<type name="character" length="128"/>
-	</column>
-	<column name="email">
-		<type name="character" length="120"/>
-	</column>
-	<column name="about_me">
-		<type name="character" length="140"/>
-	</column>
-	<column name="last_seen">
-		<type name="date" length="0"/>
-	</column>
-	<constraint name="user_example_pkey" type="pk-constr" table="public.user_example">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-	<constraint name="user_example_username_unique" type="uq-constr" table="public.user_example">
-		<columns names="username" ref-type="src-columns"/>
-	</constraint>
-	<constraint name="user_example_email_unique" type="uq-constr" table="public.user_example">
-		<columns names="email" ref-type="src-columns"/>
-	</constraint>
-</table>
-
 <relationship name="teacher_has_many_courses" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
@@ -3002,24 +2969,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<position x="166.035" y="-51.8073"/>
 	</label>
 </relationship>
-
-<table name="echo" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
-	<schema name="public"/>
-	<role name="pcto"/>
-	<position x="1404" y="412"/>
-	<column name="id" not-null="true">
-		<type name="serial" length="0"/>
-	</column>
-	<column name="time">
-		<type name="time" length="0"/>
-	</column>
-	<column name="number">
-		<type name="integer" length="0"/>
-	</column>
-	<constraint name="echo_pkey" type="pk-constr" table="public.echo">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
 
 <permission>
 	<object name="public" type="schema"/>
