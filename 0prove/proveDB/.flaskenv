@@ -1,4 +1,0 @@
-FLASK_APP=db.py
-FLASK_DEBUG=true
-FLASK_ENV=development
-FLASK_RUN_HOST=192.168.0.202
