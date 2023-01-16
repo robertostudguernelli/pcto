@@ -2,7 +2,18 @@
 
 {% block content %}
     <h1>Hello, {{ user.username }}!</h1>
-    clicca <a href="/login">qui</a> per loggarti<br>
+    <a href="{{ url_for('login') }}">LOGIN</a><br>
     oppure<br>
-    clicca <a href="/register">qui</a>  per registrarti<br>
+    <a href="{{ url_for('login') }}">REGISTRAZIONE</a><br>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
 {% endblock %}

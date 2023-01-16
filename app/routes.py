@@ -1,5 +1,8 @@
+from flask import render_template, flash, redirect, url_for
 from app import app
 from flask import render_template
+
+from app.forms import LoginForm
 
 title='PCTO Roberto Guernelli, 804513?'
 
@@ -8,8 +11,13 @@ title='PCTO Roberto Guernelli, 804513?'
 
 def index():
     user = {'username': app.config['SECRET_KEY']}
-    return render_template('index.html', title=title, user=user)
+    return render_template('index.html', title=app.config['WEB_PAGE_TITLE'], user=user)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    form=LoginForm()
+    if form.validate_on_submit():
+        flash('Login richiesto per l\'utente {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect(url_for('index'))
+    return render_template('login.html', title='login' + app.config['WEB_PAGE_TITLE'], form=form)
