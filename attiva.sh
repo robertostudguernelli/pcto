@@ -8,3 +8,9 @@ pip install -r requirements.txt
 #pip freeze > requirements.txt
 
 flask run
+
+flask db init
+flask db migrate -m "users table"
+flask db upgrade
+flask db migrate -m "posts table"
+flask db upgrade
